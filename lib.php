@@ -25,7 +25,7 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-require_once ($CFG->dirroot . '/local/nudge/locallib.php');
+
 
 function local_pluginsbackup_extend_navigation_course($navigation, $course, $context)
 {
