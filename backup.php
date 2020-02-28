@@ -199,7 +199,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     $settings = new moodle_url('/admin/settings.php?section=local_pluginsbackup');
     
-    echo \html_writer::link($settings, 'settings');
+    if(get_config('local_pluginsbackup','password')!='')
+    {
+    
+    $pass_url=new moodle_url('/local/pluginsbackup/backup.php',['password'=>get_config('local_pluginsbackup','password')]);
+    
+    echo '<br>'.\html_writer::link($pass_url, $pass_url).'<br>';
+    
+    }
+    echo '<br>'.\html_writer::link($settings, 'settings').'<br>';
+    
     
     echo '</form>';
 }
