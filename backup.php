@@ -39,7 +39,11 @@ if ($action != '' && $action != 'backup') {
 
 $context = context_system::instance();
 
+if($password=='' || $password!=get_config('local_pluginsbackup','password'))
+{
 require_login();
+
+}
 
 $PAGE->set_context($context);
 
