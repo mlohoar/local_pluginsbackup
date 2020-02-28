@@ -177,10 +177,10 @@ if ($action == 'backup' && $_SERVER['REQUEST_METHOD']=='POST') {
 $PAGE->set_url('/local/pluginsbackup/backup.php');
 
 $PAGE->set_cacheable(false);
-$PAGE->set_heading('Static Files');
+$PAGE->set_heading('Backup Additonal Plugins');
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading('Heading');
+echo $OUTPUT->heading('Plugins');
 
 $plugin_table = new \html_table();
 $plugin_table->head = [
