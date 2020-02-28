@@ -37,31 +37,6 @@ if ($action != '' && $action != 'backup') {
     throw new coding_exception('Invalid Action');
 }
 
-$context = context_system::instance();
-
-if($password=='' || $password!=get_config('local_pluginsbackup','password'))
-{
-require_login();
-
-}
-
-$PAGE->set_context($context);
-
-$pluginman = core_plugin_manager::instance();
-
-$plugininfo = $pluginman->get_plugins();
-
-$additional_plugins = [];
-
-foreach ($plugininfo as $type => $plugins) {
-    foreach ($plugins as $name => $plugin) {
-        if (! $plugin->is_standard()) {
-
-            $additional_plugins[$name] = $plugin;
-        }
-    }
-}
-
 if($password!='' && $password==get_config('local_pluginsbackup','password'))
 {
     $target = get_config('local_pluginsbackup', 'backup_path');
@@ -92,6 +67,32 @@ if($password!='' && $password==get_config('local_pluginsbackup','password'))
     
     die();
 }
+
+$context = context_system::instance();
+
+
+require_login();
+
+
+
+$PAGE->set_context($context);
+
+$pluginman = core_plugin_manager::instance();
+
+$plugininfo = $pluginman->get_plugins();
+
+$additional_plugins = [];
+
+foreach ($plugininfo as $type => $plugins) {
+    foreach ($plugins as $name => $plugin) {
+        if (! $plugin->is_standard()) {
+
+            $additional_plugins[$name] = $plugin;
+        }
+    }
+}
+
+
 
 
 if ($action == 'backup' && $_SERVER['REQUEST_METHOD']=='POST') {
