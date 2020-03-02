@@ -69,6 +69,10 @@ if ($password != '' && $password == get_config('local_pluginsbackup', 'password'
 
         $error .= local_pluginsbackup_backup_folder($source, $target, $plugindir);
     }
+    
+   
+    local_nudge_backup_config($target, $subdir);
+    
 
     if ($error != '') {
         echo $error;

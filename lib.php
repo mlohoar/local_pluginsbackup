@@ -46,26 +46,22 @@ function local_pluginsbackup_extend_navigation(global_navigation $navigation)
 function local_pluginsbackup_backup_folder(string $source, string $target, string $subdir): string
 {
     //ensure trailing \
-    if (substr($target, - 1)!='\\') {
-        $target .= '\\';
-    }
-
+    $source=local_nudge_build_full_path($source);
+    
     // Check that the source exists
     if (! file_exists($source)) {
         return 'Source folder "' . $source . '" not found';
     }
+    
+    $target=local_nudge_build_full_path($target);
+    
     // Check that the target exists
     if (! file_exists($target)) {
         return 'Target folder "' . $target . '" not found';
     }
 
-    //remove leading \
-    if(substr($subdir,1)=='\\')
-    {
-        $subdir=substr($subdir,1);
-    }
-    
-    $full_target=$target.$subdir;
+        
+    $full_target=local_nudge_build_full_path($target,$subdir);
     
     if(!file_exists($full_target))
     {
@@ -73,10 +69,6 @@ function local_pluginsbackup_backup_folder(string $source, string $target, strin
     }
 
     // Copy all the file from the source to the target
-
-    if (substr($full_target, - 1) != '\\') {
-        $full_target .= '\\';
-    }
 
     $errors = local_pluginsbackup_recursiveDelete($full_target,false);
 
@@ -86,6 +78,51 @@ function local_pluginsbackup_backup_folder(string $source, string $target, strin
     }
 
     return $errors;
+}
+
+function local_nudge_backup_config(string $target, string $subdir)
+{
+    global $CFG;
+    
+    $config_file=$CFG->dirroot.'\\config.php';
+    
+    $fulltarget=local_nudge_build_full_path($target,$subdir);
+    
+    $target_file=$fulltarget.'config.php';
+    
+    if(file_exists($target_file))
+    {
+        unlink($target_file);
+    }
+    
+    copy($config_file,$target_file);
+    
+}
+
+function local_nudge_build_full_path(string $target, string $subdir='')
+{
+    $target=str_replace('\\', '/', $target);
+    
+    $subdir=str_replace('\\', '/', $subdir);
+    
+    //ensure trailing \
+    if (substr($target, - 1)!='/') {
+        $target .= '/';
+    }
+    
+    //remove leading \
+    if(substr($subdir,0,1)=='/')
+    {
+        $subdir=substr($subdir,1);
+    }
+    $full_target=$target.$subdir;
+    
+    //Ensure trailing slash
+    if (substr($full_target, - 1) != '/') {
+        $full_target .= '/';
+    }
+    
+    return $full_target;
 }
 
 function local_pluginsbackup_recursiveDelete($str, bool $delete_dir = false): string
