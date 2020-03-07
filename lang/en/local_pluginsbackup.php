@@ -28,4 +28,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Red Tuna Plugins Backup (Local Plugin)';
-$string['pluginsbackup:update']='Update Static Files';
+$string['pluginsbackup:update']='Update Details';
+$string['pluginsbackup:run'] = 'Run Plugins backup';
