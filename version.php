@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin             = new stdClass();
 
-$plugin->version    = 2020022601;
+$plugin->version    = 2020030700;
 $plugin->requires   = 2018120300;
 $plugin->release    = "0.1";
 $plugin->component  = 'local_pluginsbackup';

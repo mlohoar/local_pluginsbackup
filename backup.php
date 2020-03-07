@@ -162,6 +162,9 @@ if ($action == 'backup' && $_SERVER['REQUEST_METHOD'] == 'POST') {
             ];
         }
     }
+    
+    //Copy across the Config
+    local_nudge_backup_config($target, $subdir);
 }
 
 $PAGE->set_url('/local/pluginsbackup/backup.php');
