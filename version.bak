@@ -17,24 +17,20 @@
 /**
  * local_nudge
  *
- * @author      Murray Lohoar
+ * @author      Murray Lohoar 
  * @copyright   (c) 2020 Red Tuna Technology Ltd
- * @license     GNU
+ * @license     GPU
  * @package     local_pluginsbackup
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
 
-    'local/pluginsbackup:run' => array(
-        'riskbitmask' => RISK_XSS,
+$plugin             = new stdClass();
 
-        'captype' => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'clonepermissionsfrom' => 'moodle/site:config'
-    ),
-
-   
-
-);
+$plugin->version    = 2020030700;
+$plugin->requires   = 2018120300;
+$plugin->release    = "0.1";
+$plugin->component  = 'local_pluginsbackup';
+$plugin->cron       = 0;
+$plugin->maturity   = MATURITY_STABLE;

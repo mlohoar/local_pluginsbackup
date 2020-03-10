@@ -20,7 +20,7 @@
  *
  * @author      Murray Lohoar 
  * @copyright   (c) 2020 Red Tuna Technology Ltd
- * @license     GNU
+ * @license     GPU
  * @package     local_pluginsbackup
  */
 defined('MOODLE_INTERNAL') || die();

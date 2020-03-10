@@ -19,7 +19,7 @@
  *
  * @author      Murray Lohoar 
  * @copyright   (c) 2020 Red Tuna Technology Ltd
- * @license     GPU
+ * @license     GNU
  * @package     local_pluginsbackup
  */
 

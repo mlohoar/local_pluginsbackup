@@ -1,6 +1,4 @@
 <?php
-
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -21,12 +19,23 @@
  *
  * @author      Murray Lohoar
  * @copyright   (c) 2020 Red Tuna Technology Ltd
- * @license     GNU
+ * @license     GPU
  * @package     local_pluginsbackup
  */
 
-defined('MOODLE_INTERNAL') || die();
+require_once (__DIR__ . '/../../config.php');
+require_once (__DIR__ . '/lib.php');
+if (get_config('local_pluginsbackup', 'active') == "0") {
+    throw new coding_exception('Not Active');
+}
 
-$string['pluginname'] = 'Red Tuna Plugins Backup (Local Plugin)';
-$string['pluginsbackup:update']='Update Details';
-$string['pluginsbackup:run'] = 'Run Plugins backup';
+
+$password = optional_param('password', '', PARAM_ALPHANUM);
+
+if($password!='' && $password==get_config('local_pluginsbackup','password'))
+{
+    
+    opcache_reset();
+    echo 'OK';
+    die();
+}
