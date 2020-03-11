@@ -42,17 +42,9 @@ if ($password != '' && $password == get_config('local_pluginsbackup', 'password'
 
     $plugininfo = $pluginman->get_plugins();
 
-    $additional_plugins = [];
+    $additional_plugins = local_pluginsbackup_get_additional_plugins();
 
-    foreach ($plugininfo as $type => $plugins) {
-        foreach ($plugins as $name => $plugin) {
-            if (! $plugin->is_standard()) {
-
-                $additional_plugins[$name] = $plugin;
-            }
-        }
-    }
-
+    
     $target = get_config('local_pluginsbackup', 'backup_path');
 
     $subdir = optional_param('subdir', '', PARAM_SAFEPATH);
@@ -93,16 +85,8 @@ $pluginman = core_plugin_manager::instance();
 
 $plugininfo = $pluginman->get_plugins();
 
-$additional_plugins = [];
+$additional_plugins = local_pluginsbackup_get_additional_plugins();
 
-foreach ($plugininfo as $type => $plugins) {
-    foreach ($plugins as $name => $plugin) {
-        if (! $plugin->is_standard()) {
-
-            $additional_plugins[$name] = $plugin;
-        }
-    }
-}
 
 if ($action == 'backup' && $_SERVER['REQUEST_METHOD'] == 'POST') {
 

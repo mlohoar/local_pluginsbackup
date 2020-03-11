@@ -172,3 +172,23 @@ function local_pluginsbackup_recurse_copy($source, $target): string
 
     return '';
 } 
+
+function local_pluginsbackup_get_additional_plugins()
+{
+    $pluginman = core_plugin_manager::instance();
+    
+    $plugininfo = $pluginman->get_plugins();
+    
+    $additional_plugins = [];
+    
+    foreach ($plugininfo as $type => $plugins) {
+        foreach ($plugins as $name => $plugin) {
+            if (! $plugin->is_standard()) {
+                
+                $additional_plugins[$type.'_'.$name] = $plugin;
+            }
+        }
+    }
+    
+    return $additional_plugins;
+}
