@@ -39,8 +39,8 @@ function local_pluginsbackup_extend_navigation(global_navigation $navigation)
 {
     global $CFG, $PAGE, $COURSE;
 
-    $url = new moodle_url('/local/pluginsbackup/backup.php');
-    $navigation->add('Plugins backup', $url, navigation_node::TYPE_SITE_ADMIN, null, null, new pix_icon('i/backup', ''));
+    //$url = new moodle_url('/local/pluginsbackup/backup.php');
+    //$navigation->add('Plugins backup', $url, navigation_node::TYPE_SITE_ADMIN, null, null, new pix_icon('i/backup', ''));
 }
 
 function local_pluginsbackup_backup_folder(string $source, string $target, string $subdir): string
