@@ -3,7 +3,7 @@
 
 When updating Moodle, any additional plugins need to be restored after the main body of code has been updated.
 This plugin provides a way to manually or automatically trigger the backup of the files associated with additional plugins
-to be backupd up to a defined location so that they can be restored.
+to be backed up to a defined location so that they can be restored.
 
 - [Installation] (#installation)
 - [Settings] (#settings)
