@@ -18,8 +18,8 @@
  * local_nudge
  *
  * @author      Murray Lohoar 
- * @copyright   (c) 2020 Red Tuna Technology Ltd
- * @license     GNU
+ * @copyright   (c) 2025 Red Tuna Technology Ltd
+ * @license     Proprietary
  * @package     local_pluginsbackup
  */
 
@@ -28,9 +28,9 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin             = new stdClass();
 
-$plugin->version    = 2023041600;
+$plugin->version    = 2023041601;
 $plugin->requires   = 2018120300;
-$plugin->release    = "0.2";
+$plugin->release    = "0.3";
 $plugin->component  = 'local_pluginsbackup';
 $plugin->cron       = 0;
 $plugin->maturity   = MATURITY_STABLE;
