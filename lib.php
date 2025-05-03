@@ -124,7 +124,7 @@ function local_nudge_build_full_path(string $target, string $subdir='')
     
     return $full_target;
 }
-
+//updated
 function local_pluginsbackup_recursiveDelete($str, bool $delete_dir = false): string
 {
     $str=str_replace('\\', '/', $str);
